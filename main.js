@@ -19,7 +19,7 @@ function displayNotes() {
 		noteElement.innerHTML = `
             <div class="notes">
                <input type="text" class="note-title" value="${note.title}" disabled>
-               <textarea class="note-description" rows='1' disabled>${note.description}</textarea>
+               <textarea class="note-description" rows='3' disabled>${note.description}</textarea>
                <div class="note-date">${note.date}</div>
             </div>
             <div class="note-actions">
