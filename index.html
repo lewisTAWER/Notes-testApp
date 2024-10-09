@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Заметки</title>
+		<link rel="stylesheet" href="main.css" />
+	</head>
+	<body>
+		<div class="container">
+			<h1>Заметки 📝</h1>
+			<form id="note-form">
+				<input type="text" id="title" placeholder="Название" required />
+				<textarea id="description" placeholder="Описание" required></textarea>
+				<button type="submit">Добавить заметку</button>
+			</form>
+
+			<div id="notes-list"></div>
+		</div>
+
+		<script src="main.js"></script>
+	</body>
+</html>

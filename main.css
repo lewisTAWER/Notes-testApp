@@ -1,0 +1,90 @@
+@import url(https://fonts.googleapis.com/css?family=Inter:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic);
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-weight: 600;
+}
+body {
+	font-family: Inter;
+	background-color: #413c3c;
+	padding: 20px;
+}
+.container {
+	max-width: 600px;
+	margin: auto;
+	padding: 20px;
+
+	background: #fff;
+	border-radius: 10px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+h1 {
+	text-align: center;
+
+	margin-bottom: 20px;
+}
+form {
+	display: flex;
+	flex-direction: column;
+}
+input,
+textarea,
+button {
+	padding: 10px;
+	margin: 5px 0;
+	font-size: 14px;
+
+	border: 2px solid black;
+	border-radius: 8px;
+}
+button {
+	background-color: #28a745;
+	color: #fff;
+	border: 2px solid black;
+
+	cursor: pointer;
+}
+button:hover {
+	background-color: #218838;
+}
+.note {
+	background-color: #fafafa;
+	border-radius: 5px;
+	border: 2px solid black;
+
+	padding: 10px;
+	margin: 10px 0;
+
+	display: flex;
+	justify-content: space-between;
+
+	position: relative;
+}
+.note-title {
+	font-weight: bold;
+	font-size: 20px;
+}
+.note-description {
+	margin: 10px 0;
+	color: rgb(66, 66, 66);
+}
+.note-date {
+	color: gray;
+	font-size: 14px;
+
+	position: absolute;
+	bottom: 5px;
+	left: 5px;
+}
+.notes {
+	display: flex;
+	flex-direction: column;
+}
+.note-actions {
+	display: grid;
+	justify-content: flex-end;
+}
+.note-actions button {
+	margin-left: 10px;
+}
