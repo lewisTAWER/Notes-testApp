@@ -6,6 +6,12 @@ function saveNotes(notes) {
 	localStorage.setItem('notes', JSON.stringify(notes))
 }
 
+// Функция для автоматического изменения высоты textarea
+function autoResizeTextarea(textarea) {
+	textarea.style.height = 'auto' // Сбрасываем высоту
+	textarea.style.height = textarea.scrollHeight + 'px' // Устанавливаем высоту в зависимости от содержимого
+}
+
 function displayNotes() {
 	const notesList = document.getElementById('notes-list')
 	notesList.innerHTML = ''
@@ -18,9 +24,9 @@ function displayNotes() {
 
 		noteElement.innerHTML = `
             <div class="notes">
-               <input type="text" class="note-title" value="${note.title}" disabled>
-               <textarea class="note-description" rows='3' cols='50' disabled>${note.description}</textarea>
-               <div class="note-date">${note.date}</div>
+                <input type="text" class="note-title" value="${note.title}" disabled>
+                <textarea class="note-description" rows='1' cols='50' disabled>${note.description}</textarea>
+                <div class="note-date">${note.date}</div>
             </div>
             <div class="note-actions">
                 <button id="edit-btn-${index}">Изменить</button>
@@ -29,6 +35,9 @@ function displayNotes() {
         `
 
 		notesList.appendChild(noteElement)
+
+		const descriptionInput = noteElement.querySelector('.note-description')
+		autoResizeTextarea(descriptionInput) // Устанавливаем начальную высоту для textarea
 
 		document
 			.getElementById(`edit-btn-${index}`)
@@ -51,6 +60,11 @@ function editNoteMode(index) {
 		titleInput.disabled = false
 		descriptionInput.disabled = false
 		editButton.textContent = 'Сохранить'
+
+		// Добавляем слушатель для автоматического изменения высоты textarea
+		descriptionInput.addEventListener('input', function () {
+			autoResizeTextarea(this)
+		})
 	} else {
 		// Save note changes
 		notes[index].title = titleInput.value
@@ -79,7 +93,9 @@ document.getElementById('note-form').addEventListener('submit', function (e) {
 	saveNotes(notes)
 	displayNotes()
 
+	// Сброс формы и высоты textarea
 	document.getElementById('note-form').reset()
+	autoResizeTextarea(document.getElementById('description'))
 })
 
 function deleteNote(index) {
