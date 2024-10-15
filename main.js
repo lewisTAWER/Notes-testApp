@@ -46,12 +46,13 @@ function editNoteMode(index) {
 	const descriptionInput = noteElement.querySelector('.note-description')
 	const editButton = noteElement.querySelector(`#edit-btn-${index}`)
 
-	titleInput.disabled = false
-	descriptionInput.disabled = false
-
-	editButton.textContent = 'Сохранить'
-
-	editButton.onclick = function () {
+	// Toggle edit mode on button click
+	if (titleInput.disabled) {
+		titleInput.disabled = false
+		descriptionInput.disabled = false
+		editButton.textContent = 'Сохранить'
+	} else {
+		// Save note changes
 		notes[index].title = titleInput.value
 		notes[index].description = descriptionInput.value
 		notes[index].date = new Date().toLocaleDateString()
@@ -60,12 +61,7 @@ function editNoteMode(index) {
 
 		titleInput.disabled = true
 		descriptionInput.disabled = true
-
 		editButton.textContent = 'Изменить'
-
-		editButton.onclick = function () {
-			editNoteMode(index)
-		}
 	}
 }
 
@@ -81,7 +77,6 @@ document.getElementById('note-form').addEventListener('submit', function (e) {
 	notes.unshift({ title, description, date })
 
 	saveNotes(notes)
-
 	displayNotes()
 
 	document.getElementById('note-form').reset()
